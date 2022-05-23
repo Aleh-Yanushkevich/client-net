@@ -3,7 +3,7 @@ using System;
 using System.Threading.Tasks;
 using Xunit;
 
-//[assembly:CollectionBehavior(MaxParallelThreads = -1)]
+[assembly: CollectionBehavior(MaxParallelThreads = -1)]
 
 namespace ReportPortal.Client.IntegrationTests
 {
