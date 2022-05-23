@@ -19,9 +19,9 @@ namespace ReportPortal.Client.IntegrationTests.User
             Assert.NotEmpty(user.AssignedProjects.Keys);
 
             // Assert.Contains("ci-agents-checks", user.AssignedProjects.Keys);
-            Assert.Contains("default_personal", user.AssignedProjects.Keys);
+            Assert.Contains("aleh-yanushkevich_personal", user.AssignedProjects.Keys);
             //Assert.Equal(ProjectRole.Member, user.AssignedProjects["ci-agents-checks"].ProjectRole);
-            Assert.Equal(ProjectRole.ProjectManager, user.AssignedProjects["default_personal"].ProjectRole);
+            Assert.Equal(ProjectRole.ProjectManager, user.AssignedProjects["aleh-yanushkevich_personal"].ProjectRole);
         }
     }
 }
