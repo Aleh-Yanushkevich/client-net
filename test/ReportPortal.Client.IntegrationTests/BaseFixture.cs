@@ -1,9 +1,10 @@
 ﻿using System;
 using Xunit;
 
+[assembly:CollectionBehavior(MaxParallelThreads = 4)]
+
 namespace ReportPortal.Client.IntegrationTests
 {
-    [Collection(nameof(SystemTestCollectionDefinition))]
     public class BaseFixture
     {
         protected static readonly string Username = "ALEH-YANUSHKEVICH";
