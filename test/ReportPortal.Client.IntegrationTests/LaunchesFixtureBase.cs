@@ -12,26 +12,6 @@ namespace ReportPortal.Client.IntegrationTests
     {
         private List<LaunchCreatedResponse> CreatedLaunches { get; } = new List<LaunchCreatedResponse>();
 
-        public LaunchesFixtureBase()
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                var createdLaunch = Service.Launch.StartAsync(new StartLaunchRequest
-                {
-                    Name = "LaunchItemFixture",
-                    StartTime = DateTime.UtcNow,
-                    Mode = LaunchMode.Default
-                }).GetAwaiter().GetResult();
-
-                Service.Launch.FinishAsync(createdLaunch.Uuid, new FinishLaunchRequest
-                {
-                    EndTime = DateTime.UtcNow
-                }).GetAwaiter().GetResult();
-
-                CreatedLaunches.Add(createdLaunch);
-            }
-        }
-
         public async Task InitializeAsync()
         {
             for (int i = 0; i < 10; i++)
