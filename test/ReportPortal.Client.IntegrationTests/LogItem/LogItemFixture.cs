@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -214,6 +215,8 @@ namespace ReportPortal.Client.IntegrationTests.LogItem
         [Fact]
         public async Task GetLogItems()
         {
+            var context = SynchronizationContext.Current as Xunit.Sdk.AsyncTestSyncContext;
+
             var newTestUuid = (await Service.TestItem.StartAsync(new StartTestItemRequest
             {
                 LaunchUuid = _fixture.LaunchUuid,
