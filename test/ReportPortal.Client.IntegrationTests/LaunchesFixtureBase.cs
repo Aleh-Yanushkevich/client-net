@@ -3,10 +3,12 @@ using ReportPortal.Client.Abstractions.Requests;
 using ReportPortal.Client.Abstractions.Responses;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Xunit;
 
 namespace ReportPortal.Client.IntegrationTests
 {
-    public class LaunchesFixtureBase : BaseFixture, IDisposable
+    public class LaunchesFixtureBase : BaseFixture, IAsyncLifetime
     {
         private List<LaunchCreatedResponse> CreatedLaunches { get; } = new List<LaunchCreatedResponse>();
 
@@ -30,13 +32,33 @@ namespace ReportPortal.Client.IntegrationTests
             }
         }
 
-        public void Dispose()
+        public async Task InitializeAsync()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                var createdLaunch = await Service.Launch.StartAsync(new StartLaunchRequest
+                {
+                    Name = "LaunchItemFixture",
+                    StartTime = DateTime.UtcNow,
+                    Mode = LaunchMode.Default
+                });
+
+                await Service.Launch.FinishAsync(createdLaunch.Uuid, new FinishLaunchRequest
+                {
+                    EndTime = DateTime.UtcNow
+                });
+
+                CreatedLaunches.Add(createdLaunch);
+            }
+        }
+
+        public async Task DisposeAsync()
         {
             foreach (var createdLaunch in CreatedLaunches)
             {
-                var gotCreatedLaunch = Service.Launch.GetAsync(createdLaunch.Uuid).GetAwaiter().GetResult();
+                var gotCreatedLaunch = await Service.Launch.GetAsync(createdLaunch.Uuid);
 
-                Service.Launch.DeleteAsync(gotCreatedLaunch.Id).GetAwaiter().GetResult();
+               await Service.Launch.DeleteAsync(gotCreatedLaunch.Id);
             }
         }
     }
