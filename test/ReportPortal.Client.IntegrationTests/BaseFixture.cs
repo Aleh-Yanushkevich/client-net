@@ -5,8 +5,8 @@ namespace ReportPortal.Client.IntegrationTests
     public class BaseFixture
     {
         protected static readonly string Username = "default";
-        protected static readonly string ProjectName = "default_personal";
-        protected readonly Service Service = new Service(new Uri("https://demo.reportportal.io/api/v1"), ProjectName, "3372f701-dbe2-419e-8404-1aa4c3096830");
+        protected static readonly string ProjectName = "aleh-yanushkevich_personal";
+        protected readonly Service Service = new Service(new Uri("https://demo.reportportal.io/api/v1"), ProjectName, "221be394-5d2d-4252-9d6f-365a0b1c9816");
 
         //protected static readonly string Username = "default";
         //protected static readonly string ProjectName = "default_personal";
