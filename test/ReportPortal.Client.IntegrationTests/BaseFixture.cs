@@ -1,7 +1,9 @@
 ﻿using System;
+using Xunit;
 
 namespace ReportPortal.Client.IntegrationTests
 {
+    [Collection(nameof(SystemTestCollectionDefinition))]
     public class BaseFixture
     {
         protected static readonly string Username = "ALEH-YANUSHKEVICH";
