@@ -3,6 +3,8 @@ using System;
 using System.Threading.Tasks;
 using Xunit;
 
+[assembly:CollectionBehavior(MaxParallelThreads = -1)]
+
 namespace ReportPortal.Client.IntegrationTests
 {
     public class LaunchFixtureBase : BaseFixture, IAsyncLifetime
