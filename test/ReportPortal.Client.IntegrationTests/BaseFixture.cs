@@ -1,8 +1,6 @@
 ﻿using System;
 using Xunit;
 
-//[assembly:CollectionBehavior(MaxParallelThreads = 4)]
-
 namespace ReportPortal.Client.IntegrationTests
 {
     public class BaseFixture
