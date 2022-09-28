@@ -33,7 +33,7 @@ jobs:
       - name: Publish Coverage
         uses: codecov/codecov-action@v3
         with:
-          files: ./Coverage.xml
+          files: test\ReportPortal.Client.IntegrationTests\Coverage.*.xml
         if: success() || failure()
 
 
