@@ -6,7 +6,7 @@ namespace ReportPortal.Client.IntegrationTests
     {
         protected static readonly string Username = "default";
         protected static readonly string ProjectName = "default_personal";
-        protected readonly Service Service = new Service(new Uri("https://demo.reportportal.io/api/v1"), ProjectName, "abf6b089-1957-49fc-af29-53dd2378a1e6");
+        protected readonly Service Service = new Service(new Uri("https://demo.reportportal.io/api/v1"), ProjectName, "4b035f71-4067-4a10-a2e3-60bba9c19ba0");
 
         //protected static readonly string Username = "default";
         //protected static readonly string ProjectName = "default_personal";
