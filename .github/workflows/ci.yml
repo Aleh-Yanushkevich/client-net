@@ -24,7 +24,7 @@ jobs:
       - name: Install .NET
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: $env:DotNetVersion
+          dotnet-version: ${{ env.DotNetVersion }}
 
       - name: Install Codecov
         run: 'dotnet tool install -g codecov.tool'
@@ -34,7 +34,7 @@ jobs:
 
       
       - name: Test
-        run: 'dotnet test -c $env:Configuration /p:CollectCoverage=true /p:CoverletOutputFormat=OpenCover /p:CoverletOutput=./Coverage.xml'
+        run: 'dotnet test -c ${{ env.Configuration }} /p:CollectCoverage=true /p:CoverletOutputFormat=OpenCover /p:CoverletOutput=./Coverage.xml'
 
 
       - name: Publish Coverage
